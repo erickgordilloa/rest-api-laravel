@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Department extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'category_id',
+    ];
+
+    protected $hidden = ['created_at', 'updated_at', 'deleted_at'];
+
+    protected $dates = ['deleted_at'];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
